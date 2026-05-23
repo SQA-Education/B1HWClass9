@@ -10,20 +10,20 @@
 <div class="container">
     <div class="header"><h1>🚌 Session 9: Commuting and Transportation</h1><p>Week 5 • Transportation Vocabulary & Opinions</p></div>
     <div class="student-info" id="studentInfoSection"><label>Your Full Name</label><input type="text" id="studentName" placeholder="Enter your name...">
-<label style="display:none">Your Teacher</label>
+<label>Your Teacher</label>
 <input type="hidden" id="teacherName" value="">
 <label>Your Class</label>
 <select id="className" style="width:100%;padding:14px;border:2px solid #e0e0e0;border-radius:12px;font-size:16px;margin-bottom:15px" onchange="setTeacher(this)">
-<option value="">-- Select your class --</option>
-<optgroup label="Laura Ebel">
-<option value="3088" data-teacher="Laura Ebel">3088 - Mon/Wed 9:00 AM (Laura)</option>
-</optgroup>
-<optgroup label="Jonelle Williams">
-<option value="3092" data-teacher="Jonelle Williams">3092 - Mon/Wed 6:30 PM (Jonelle)</option>
-<option value="3093" data-teacher="Jonelle Williams">3093 - Mon/Wed 8:30 PM (Jonelle)</option>
-<option value="3099" data-teacher="Jonelle Williams">3099 - Tue/Thu 6:30 PM (Jonelle)</option>
-<option value="3103" data-teacher="Jonelle Williams">3103 - Tue/Thu 8:30 PM (Jonelle)</option>
-</optgroup>
+  <option value="">-- Select your class --</option>
+  <optgroup label="Laura Ebel">
+    <option value="3088" data-teacher="Laura Ebel">3088 - Mon/Wed 9:00 AM (Laura)</option>
+    <option value="3090" data-teacher="Laura Ebel">3090 - Mon/Wed 6:30 PM (Laura)</option>
+    <option value="3095" data-teacher="Laura Ebel">3095 - Tue/Thu 11:00 AM (Laura)</option>
+  </optgroup>
+  <optgroup label="Jonelle Williams">
+    <option value="3098" data-teacher="Jonelle Williams">3098 - Tue/Thu 6:30 PM (Jonelle)</option>
+    <option value="3101" data-teacher="Jonelle Williams">3101 - Tue/Thu 8:30 PM (Jonelle)</option>
+  </optgroup>
 </select>
 <button class="btn" style="width:100%" onclick="startHomework()">Start Homework →</button></div>
     <div class="progress-bar" id="progressBar" style="display:none"><div class="progress-track"><div class="progress-fill" id="progressFill" style="width:0"></div></div><div class="progress-text"><span id="progressLabel">Section 1 of 5</span><span id="progressPercent">0%</span></div></div>
@@ -264,7 +264,7 @@ function stopRec(){
 
 function submitSpeaking(){
   try{
-document.getElementById('speakingLoading').classList.add('visible');setTimeout(()=>{sc.s=rs>=30?20:rs>=20?15:rs>=10?10:5;document.getElementById('speakingFeedback').innerHTML='<h4>Feedback</h4><p>Duration: '+Math.floor(rs/60)+':'+(rs%60).toString().padStart(2,'0')+'</p><p><strong>Score: '+sc.s+'/20</strong></p>';document.getElementById('speakingLoading').classList.remove('visible');document.getElementById('speakingFeedback').classList.add('visible');goTo(5)},1500)
+document.getElementById('speakingLoading').classList.add('visible');setTimeout(()=>{var dur=recTime||0;sc.s=dur>=30?20:dur>=20?15:dur>=10?10:5;document.getElementById('speakingFeedback').innerHTML='<h4>Feedback</h4><p>Duration: '+Math.floor(dur/60)+':'+(dur%60).toString().padStart(2,'0')+'</p><p><strong>Score: '+sc.s+'/20</strong></p>';document.getElementById('speakingLoading').classList.remove('visible');document.getElementById('speakingFeedback').classList.add('visible');goTo(5)},1500)
   }catch(e){console.log('err:',e);}finally{goTo(5);}
 }
 

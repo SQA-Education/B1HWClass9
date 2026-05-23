@@ -90,7 +90,7 @@
 </div>
 
 <script>
-const SESSION='9';let sn='',sc={l:0,v:0,w:0,s:0,g:0},cs=1,selectedWord=null;let voices=[],isSpeaking=false;let mr,ac,isRec=false,rs=0,ri;let speechTranscript='';
+const SESSION='9';let sn='',sc={l:0,v:0,w:0,s:0,g:0},cs=1,selectedWord=null;let voices=[],isSpeaking=false;let isRec=false,recTime=0,recTimer=null,recognition=null;let speechTranscript='';
 const listeningScript=[{speaker:'Sofia',text:'Hello Ahmed! How do you get to work?'},{speaker:'Ahmed',text:'I take the subway. It takes about 45 minutes. How about you?'},{speaker:'Sofia',text:"I drive to the train station, then take the train. It's about an hour total."},{speaker:'Ahmed',text:'Have you tried the bus?'},{speaker:'Sofia',text:"No, buses are too infrequent. I tried biking once, but it wasn't safe."},{speaker:'Ahmed',text:'I tried different options, but the subway is most reliable. I can read or listen to podcasts.'},{speaker:'Sofia',text:"Maybe I'll try your subway route sometime."}];
 function loadVoices(){voices=speechSynthesis.getVoices()}speechSynthesis.onvoiceschanged=loadVoices;loadVoices();
 function getBestVoice(g){const d=['Google','Microsoft','Samantha','Daniel'];let best=null,bs=0;for(const v of voices){if(!v.lang.startsWith('en'))continue;let s=0;for(const x of d){if(v.name.includes(x))s+=10}if(v.lang==='en-US')s+=5;if(g==='f'&&(v.name.includes('Samantha')||v.name.includes('Female')))s+=8;if(g==='m'&&(v.name.includes('Daniel')||v.name.includes('Male')))s+=8;if(s>bs){bs=s;best=v}}return best||voices[0]}
